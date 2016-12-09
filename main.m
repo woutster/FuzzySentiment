@@ -34,6 +34,21 @@ for word = sentence_words
    end   
 end
 
-sentence_score_1 = sentence_score_1 / count1
-sentence_score_2 = sentence_score_2 / count2
-sentence_score_3 = sentence_score_3 / count3
+sentence_score_AFINN = sentence_score_1 / count1;
+sentence_score_LABMT = sentence_score_2 / count2;
+sentence_score_SENTINET = sentence_score_3 / count3;
+
+if isnan(sentence_score_AFINN)
+    sentence_score_AFINN = 0;
+end
+if isnan(sentence_score_LABMT)
+    sentence_score_LABMT = 0.5;
+end
+if isnan(sentence_score_SENTINET)
+    sentence_score_SENTINET = 0.5;
+end
+
+input_fls = [sentence_score_AFINN, sentence_score_SENTINET, sentence_score_LABMT]
+
+fls = readfis('FuzzySentiment.fis');
+output = evalfis(input_fls, fls);
