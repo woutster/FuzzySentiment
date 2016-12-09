@@ -1,5 +1,5 @@
+% Split all words in a sentence and remove punctuation
 function [ clean_words ] = sentenceToWords( sentence )
-    % Split all words in a sentence and remove punctuation
     words = strsplit(sentence);
     clean_words = [];
     

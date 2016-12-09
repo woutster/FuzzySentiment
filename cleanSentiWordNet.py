@@ -1,3 +1,6 @@
+# Clean the SentiWordNet dataset
+# Unfortunately there are a lot of hastags after each word, so we can strip those and save the new file.
+
 import pandas
 import numpy as np
 
@@ -9,4 +12,5 @@ for index, line in enumerate(data):
 	posScore = line[1]
 	negScore = line[2]
 	finalList.append([word, posScore, negScore])
-np.savetxt('Data/SentiNet-preprocessed.csv', finalList, delimiter=",")
+data = pandas.DataFrame.from_records(finalList)
+data.to_csv('Data/SentiNet-preprocessed.csv', sep= ' ', columns=None, index=False)
