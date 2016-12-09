@@ -15,33 +15,33 @@ DefuzzMethod='centroid'
 Name='AFINN'
 Range=[-5 5]
 NumMFs=3
-MF1='Negative':'trimf',[-5 -5 -1]
+MF1='Negative':'trimf',[-5 -5 0]
 MF2='Neutral':'trimf',[-3 0 3]
-MF3='Positive':'trimf',[1 5 5]
+MF3='Positive':'trimf',[0 5 5]
 
 [Input2]
 Name='SentiPos'
 Range=[0 1]
 NumMFs=3
-MF1='LowPos':'trimf',[-0.4 0 0.3]
+MF1='LowPos':'trimf',[-0.4 0 0.496938775510204]
 MF2='MediumPos':'trimf',[0.1 0.5 0.9]
-MF3='HighPos':'trimf',[0.6 1 1.4]
+MF3='HighPos':'trimf',[0.505102040816326 1 1.4]
 
 [Input3]
 Name='SentiNeg'
 Range=[0 1]
 NumMFs=3
-MF1='LowNeg':'trimf',[-0.4 0 0.3]
+MF1='LowNeg':'trimf',[-0.4 0 0.5]
 MF2='MediumNeg':'trimf',[0.1 0.5 0.9]
-MF3='HighNeg':'trimf',[0.6 1 1.4]
+MF3='HighNeg':'trimf',[0.5 1 1.4]
 
 [Input4]
 Name='labMT'
 Range=[1 10]
 NumMFs=3
-MF1='Negative':'trimf',[-2.6 1 4.5]
+MF1='Negative':'trimf',[-2.6 1 5.5]
 MF2='Neutral':'trimf',[2.5 5.5 8.5]
-MF3='Positve':'trimf',[6.5 10 13.6]
+MF3='Positve':'trimf',[5.5 10 13.6]
 
 [Output1]
 Name='Output'
