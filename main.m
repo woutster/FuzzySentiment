@@ -21,7 +21,7 @@ else
 end
 
 % Read in the FLS
-fls = readfis('FuzzySentiment.fis');
+fls = readfis('FuzzySentimentNeg.fis');
 outcome_data = [];
 
 % Set up the waitbar
