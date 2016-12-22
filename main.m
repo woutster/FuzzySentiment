@@ -111,14 +111,17 @@ for sentence = test_sentences'
     if isnan(sentence_score_SENTINET_NEG)
         sentence_score_SENTINET_NEG = 0.5;
     end
-
+    
+    
     % Make the input for the FLS
     input_fls = [
         sentence_score_AFINN,
         sentence_score_SENTINET_POS,
         sentence_score_SENTINET_NEG,
         sentence_score_LABMT];
+    
 
+    
     % Put it in the FLS and generate crisp output
     output = evalfis(input_fls, fls);
     full_counter = full_counter + 1;
