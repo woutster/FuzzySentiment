@@ -4,7 +4,7 @@
 % Gather all the data
 [word1, word2, word3, score1, score2, posscore, negscore] = readTrainData();
 
-prompt = 'Press 1 for twitter, 2 for amazon, 3 for yelp and 4 for imdb data and press enter to confirm: ';
+prompt = 'Press 1 for twitter, 2 for amazon, 3 for yelp and 4 for imdb data or 5 for user input and press enter to confirm: ';
 x = input(prompt);
 
 % Give the user the choice which medium it wants to test
@@ -16,6 +16,22 @@ elseif x == 3
     [test_sentences, test_score] = readTestData('Data/Test/yelp_labelled.csv',2, 1001);
 elseif x == 4
     [test_sentences, test_score] = readTestData('Data/Test/imdb_labelled.csv',2, 1001);
+elseif x == 5
+    prompt = 'press 1 for positive sentence and 2 for negative sentence: ';
+    x = input(prompt);
+    if x == 1
+        prompt = 'please enter sentence: ';
+        input_sentence = input(prompt);
+        test_sentences = cellstr(input_sentence);
+        test_score = 1;
+    elseif x == 2
+        prompt = 'please enter sentence: ';
+        input_sentence = input(prompt);
+        test_sentences = cellstr(input_sentence);
+        test_score = 0;
+    else
+        error('Invalid data, program will abort');
+    end
 else
     error('Invalid data, program will abort');
 end
@@ -123,15 +139,15 @@ for sentence = test_sentences'
 
     
     % Put it in the FLS and generate crisp output
-    output = evalfis(input_fls, fls);
+    output_score = evalfis(input_fls, fls)
     full_counter = full_counter + 1;
     
     % if output is positive, set to 1 for comparisson with testdata 
-    if output > 0
-        outcome_data = [outcome_data; [1, output]];
+    if output_score > 0
+        outcome_data = [outcome_data; [1, output_score]];
     % else set to 0
     else
-        outcome_data = [outcome_data; [0, output]];
+        outcome_data = [outcome_data; [0, output_score]];
     end
     % Report current estimate in the waitbar's message field
     percentage_complete = (full_counter / full_length) * 100;
